@@ -1,0 +1,38 @@
+.navbar {
+  height: 64px;
+  background-color: white;
+  color: #00995d;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  border-bottom: 1px solid #e0e0e0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  .logo {
+    display: flex;
+    align-items: center;
+
+    img {
+      height: 32px;
+      margin-right: 8px;
+    }
+
+    .title {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+  }
+
+  .spacer {
+    flex: 1;
+  }
+
+  .avatar {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+  }
+}

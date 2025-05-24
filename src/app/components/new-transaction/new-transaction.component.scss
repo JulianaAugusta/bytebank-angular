@@ -1,0 +1,22 @@
+.new-transaction-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 1rem;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+  .full-width {
+    width: 100%;
+  }
+
+  .submit-btn {
+    align-self: flex-end;
+  }
+}
+

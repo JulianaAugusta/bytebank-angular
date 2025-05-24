@@ -1,0 +1,32 @@
+<div class="extract-container">
+  <h3 class="title">Extrato</h3>
+
+  <div *ngFor="let group of groupedTransactions">
+    <h4>{{ group.month }}</h4>
+
+    <div *ngFor="let t of group.transactions" class="transaction">
+      <mat-icon
+        fontSet="material-symbols-outlined"
+        class="icon"
+        [ngClass]="{ income: t.amount > 0, expense: t.amount < 0 }"
+      >
+        {{ t.type === 'Recebida' ? 'call_received' : 'call_made' }}
+      </mat-icon>
+
+      <div class="info">
+        <span>Pix Transfer {{ t.type }}</span>
+        <small>{{ t.date | date : "MMMM d, y" }}</small>
+      </div>
+
+      <div
+        class="amount"
+        [ngClass]="{ income: t.amount > 0, expense: t.amount < 0 }"
+      >
+        R$ {{ getPositiveAmount(t.amount) | number : "1.2-2" }}
+      </div>
+    </div>
+  </div>
+
+  <!-- TODO: implementacao futura, talvez -->
+  <a class="see-more">Veja mais</a>
+</div>

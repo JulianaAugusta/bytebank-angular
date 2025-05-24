@@ -1,0 +1,27 @@
+<section class="new-transaction-form">
+  <h3 class="title">Nova Transação</h3>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Tipo de transação:</mat-label>
+    <mat-select [(ngModel)]="transactionType">
+      <mat-option [value]="'Received'">Receber</mat-option>
+      <mat-option [value]="'Sent'">Enviar</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Valor:</mat-label>
+    <input matInput type="number" [(ngModel)]="amount" />
+  </mat-form-field>
+
+  <button
+    mat-flat-button
+    color="primary"
+    class="submit-btn"
+    [disabled]="!transactionType || amount === null"
+    (click)="submitTransaction()"
+  >
+    Enviar
+  </button>
+</section>
+

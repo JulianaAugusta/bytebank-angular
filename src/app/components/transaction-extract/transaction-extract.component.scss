@@ -1,0 +1,74 @@
+.extract-container {
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 320px;
+
+  .title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 1rem;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+  h4 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #00995d;
+  }
+
+  .transaction {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f0f0f0;
+
+    .icon {
+      font-size: 24px;
+      &.income {
+        color: #00995d;
+      }
+
+      &.expense {
+        color: #d32f2f;
+      }
+    }
+
+    .info {
+      flex: 1;
+      span {
+        font-weight: 500;
+      }
+      small {
+        display: block;
+        color: #777;
+      }
+    }
+
+    .amount {
+      font-weight: bold;
+
+      &.income {
+        color: #00995d;
+      }
+
+      &.expense {
+        color: #d32f2f;
+      }
+    }
+  }
+
+  .see-more {
+    display: block;
+    margin-top: 1rem;
+    text-align: right;
+    font-weight: 500;
+    color: #00995d;
+    cursor: pointer;
+  }
+}

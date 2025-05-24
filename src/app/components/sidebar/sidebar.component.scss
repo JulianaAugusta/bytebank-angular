@@ -1,0 +1,28 @@
+.sidebar {
+  width: 200px;
+  height: 100vh;
+  background-color: #fff;
+  border-right: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem 0;
+
+  a.mat-list-item {
+    color: #333;
+    font-weight: 500;
+    gap: 1rem;
+
+    mat-icon {
+      color: #00995d;
+    }
+
+    &:hover {
+      background-color: #f5f5f5;
+    }
+  }
+
+  .logout {
+    padding: 0 1rem;
+  }
+}
