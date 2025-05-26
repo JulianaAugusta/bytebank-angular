@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { AuthService } from '@core/services/auth.service';
 
 
 @Component({
@@ -13,5 +14,9 @@ import { MatListModule } from '@angular/material/list';
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent {
+  authService = inject(AuthService);
 
+  logout() {
+    this.authService.logout();
+  }
 }
