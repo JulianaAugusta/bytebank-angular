@@ -1,0 +1,69 @@
+<div class="main">
+  <div class="branding">
+    <img src="assets/images/logo.png" alt="">
+  </div>
+  <div class="login-container">
+    <div class="signin-div">
+      <h1>{{singupMode() ? 'Sign up' : 'Sing in'}}</h1>
+      <p class="login-message">
+        Welcome! Please enter your credentials to {{singupMode() ? 'register' : 'access'}} your account.
+      </p>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      @if(singupMode()) {
+        <mat-form-field>
+          <mat-label>Enter your name</mat-label>
+          <input
+            matInput
+            formControlName="name"
+            required
+          />
+          @if (form.controls.name.invalid && (form.controls.name.dirty || form.controls.name.touched)) {
+            <mat-error>Name is required</mat-error>
+          }
+        </mat-form-field>
+      }
+      
+      <mat-form-field>
+        <mat-label>Enter your email</mat-label>
+        <input
+          matInput
+          placeholder="user@example.com"
+          formControlName="email"
+          required
+        />
+        @if (form.controls.email.invalid && (form.controls.email.dirty || form.controls.email.touched)) {
+          <mat-error>Email is required</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Enter your password</mat-label>
+        <input 
+          matInput 
+          [attr.type]="showPassword() ? 'text' : 'password'" 
+          formControlName="password"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          type="button"
+          (click)="togglePassword()"
+          [attr.aria-label]="'Hide password'"
+        >
+          <mat-icon>{{showPassword() ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <div class="button-wrapper">
+        @if(singupMode()) {
+          <p class="singup-text">Already have an account? <a (click)="toggleSingup()">Sign in</a></p>
+        } @else {
+          <p class="singup-text">Don't have an account? <a (click)="toggleSingup()">Sign up</a></p>
+        }
+        <button type="submit">{{singupMode() ? 'Create account' : 'Login'}}</button>
+      </div>
+    </form>
+  </div>
+</div>
