@@ -1,5 +1,5 @@
 <nav class="sidebar">
-  <mat-nav-list>
+  <mat-nav-list class="sidebar-list">
     <a mat-list-item routerLink="/">
       <mat-icon class="material-symbols-outlined"> home </mat-icon>
       <span>Início</span>
@@ -16,12 +16,10 @@
       <mat-icon class="material-symbols-outlined"> grid_view </mat-icon>
       <span>Outros serviços</span>
     </a>
-  </mat-nav-list>
 
-  <div class="logout">
-    <a mat-list-item>
+    <a mat-list-item class="logout-item" (click)="logout()">
       <mat-icon>logout</mat-icon>
       <span>Sair</span>
     </a>
-  </div>
+  </mat-nav-list>
 </nav>
