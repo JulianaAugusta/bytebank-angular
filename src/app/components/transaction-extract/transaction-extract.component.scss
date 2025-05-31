@@ -63,6 +63,10 @@
     }
   }
 
+  .actions {
+    display: flex;
+  }
+
   .see-more {
     display: block;
     margin-top: 1rem;
@@ -72,3 +76,12 @@
     cursor: pointer;
   }
 }
+
+::ng-deep .transaction .mat-icon.income {
+  color: #00995d !important;
+}
+
+::ng-deep .transaction .mat-icon.expense {
+  color: #d32f2f !important;
+}
+

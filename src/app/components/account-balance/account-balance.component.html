@@ -4,7 +4,7 @@
       <span>Saldo</span>
       <button mat-icon-button (click)="toggleBalanceVisibility()">
         <mat-icon fontSet="material-symbols-outlined">
-          {{ showBalance ? 'visibility_off' : 'visibility' }}
+          {{ showBalance ? "visibility_off" : "visibility" }}
         </mat-icon>
       </button>
     </div>
@@ -12,7 +12,10 @@
   </div>
 
   <div class="value">
-    {{ showBalance ? ('R$ ' + balance.toLocaleString('pt-BR', { minimumFractionDigits: 2 })) : '••••••' }}
+    {{
+      showBalance
+        ? "R$ " + balance.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
+        : "••••••"
+    }}
   </div>
 </mat-card>
-

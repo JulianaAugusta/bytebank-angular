@@ -1,0 +1,29 @@
+<h2>Editar Transação</h2>
+
+<mat-form-field class="full-width" appearance="outline">
+  <mat-label>Tipo</mat-label>
+  <mat-select [(ngModel)]="editedTransaction.type">
+    <mat-option value="income">Depósito</mat-option>
+    <mat-option value="expense">Transferência</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field class="full-width" appearance="outline">
+  <mat-label>Valor</mat-label>
+  <input matInput type="number" [(ngModel)]="editedTransaction.amount" />
+</mat-form-field>
+
+<mat-form-field class="full-width" appearance="outline">
+  <mat-label>Data</mat-label>
+  <input matInput type="date" [(ngModel)]="editedTransaction.date" />
+</mat-form-field>
+
+<mat-form-field class="full-width" appearance="outline">
+  <mat-label>Descrição</mat-label>
+  <input matInput [(ngModel)]="editedTransaction.notes" />
+</mat-form-field>
+
+<div class="actions">
+  <button mat-flat-button color="primary" (click)="submit()">Salvar</button>
+</div>
+
