@@ -8,25 +8,45 @@
       <mat-icon
         fontSet="material-symbols-outlined"
         class="icon"
-        [ngClass]="{ income: t.amount > 0, expense: t.amount < 0 }"
+        [ngClass]="{
+          income: t.type === 'income',
+          expense: t.type === 'expense'
+        }"
       >
-        {{ t.type === 'Recebida' ? 'call_received' : 'call_made' }}
+        {{ t.type === "income" ? "call_received" : "call_made" }}
       </mat-icon>
 
       <div class="info">
-        <span>Pix Transfer {{ t.type }}</span>
-        <small>{{ t.date | date : "MMMM d, y" }}</small>
+        <span> {{ t.type === "income" ? "Depósito" : "Transferência" }}</span>
+        <small>{{ t.date | date : "MMMM d, y" : undefined : "pt-BR" }}</small>
       </div>
 
       <div
         class="amount"
-        [ngClass]="{ income: t.amount > 0, expense: t.amount < 0 }"
+        [ngClass]="{
+          income: t.type === 'income',
+          expense: t.type === 'expense'
+        }"
       >
         R$ {{ getPositiveAmount(t.amount) | number : "1.2-2" }}
+      </div>
+
+      <div class="actions">
+        <button mat-icon-button (click)="openEditModal(t)">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button
+          mat-icon-button
+          color="warn"
+          (click)="deleteTransaction(t.id, t.description)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
       </div>
     </div>
   </div>
 
-  <!-- TODO: implementacao futura, talvez -->
-  <a class="see-more">Veja mais</a>
+  <!-- Placeholder para futura paginação -->
+  <!-- <a class="see-more">Veja mais</a> -->
 </div>

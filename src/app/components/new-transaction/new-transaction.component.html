@@ -4,15 +4,22 @@
   <mat-form-field appearance="outline" class="full-width">
     <mat-label>Tipo de transação:</mat-label>
     <mat-select [(ngModel)]="transactionType">
-      <mat-option [value]="'Received'">Receber</mat-option>
-      <mat-option [value]="'Sent'">Enviar</mat-option>
+      <mat-option [value]="'Received'">Depósito</mat-option>
+      <mat-option [value]="'Sent'">Transferência</mat-option>
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Valor:</mat-label>
-    <input matInput type="number" [(ngModel)]="amount" />
-  </mat-form-field>
+  <div class="container-form">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Valor:</mat-label>
+      <input matInput type="number" [(ngModel)]="amount" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Data:</mat-label>
+      <input matInput type="date" [(ngModel)]="transactionDate" />
+    </mat-form-field>
+  </div>
 
   <button
     mat-flat-button
@@ -24,4 +31,3 @@
     Enviar
   </button>
 </section>
-

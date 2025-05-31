@@ -3,12 +3,12 @@ import { authGuard } from '@core/guards/auth.guard';
 import { BaseComponent } from '@pages/base/base.component';
 
 export const routes: Routes = [
-  { 
-    path: '', 
+  {
+    path: '',
     redirectTo: 'home',
-    pathMatch: 'full' 
+    pathMatch: 'full'
   },
-  { 
+  {
     path: 'login',
     loadComponent: () => import('./pages/login/login.component').then(m => m.LoginComponent)
   },
