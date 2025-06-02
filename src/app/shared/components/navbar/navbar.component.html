@@ -1,15 +1,17 @@
 @if(isHomePage()) {
   <mat-toolbar class="home-navbar">
-    <div class="bytebank-pages">
-      <div class="logo">
-        <img src="assets/images/logo.png" alt="Bytebank Logo"/>
+    <div class="nav-content">
+      <div class="bytebank-pages">
+        <div class="logo">
+          <img src="assets/images/logo.png" alt="Bytebank Logo"/>
+        </div>
+        <a routerLink="/sobre">About</a>
+        <a routerLink="/sobre">Services</a>
       </div>
-      <a routerLink="/sobre">Sobre</a>
-      <a routerLink="/sobre">Serviços</a>
-    </div>
-    <div class="actions-login">
-      <a routerLink="/login">Abrir minha conta</a>
-      <a routerLink="/login">Acessar conta</a>
+      <div class="actions-login">
+        <a (click)="openAccountDialog(true)">Open my account</a>
+        <a (click)="openAccountDialog(false)">Access</a>
+      </div>
     </div>
   </mat-toolbar>
 } @else {
@@ -25,4 +27,3 @@
     </button>
   </mat-toolbar>
 }
-
