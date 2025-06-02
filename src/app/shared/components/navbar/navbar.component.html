@@ -1,12 +1,28 @@
-<mat-toolbar color="primary" class="navbar">
-  <div class="logo">
-    <img src="assets/images/logo.png" alt="Bytebank Logo" />
-  </div>
-
-  <span class="spacer"></span>
-
-  <button mat-icon-button>
-    <img src="assets/images/avatar.png" alt="User" class="avatar" />
-  </button>
-</mat-toolbar>
+@if(isHomePage()) {
+  <mat-toolbar class="home-navbar">
+    <div class="bytebank-pages">
+      <div class="logo">
+        <img src="assets/images/logo.png" alt="Bytebank Logo"/>
+      </div>
+      <a routerLink="/sobre">Sobre</a>
+      <a routerLink="/sobre">Serviços</a>
+    </div>
+    <div class="actions-login">
+      <a routerLink="/login">Abrir minha conta</a>
+      <a routerLink="/login">Acessar conta</a>
+    </div>
+  </mat-toolbar>
+} @else {
+  <mat-toolbar color="primary" class="navbar">
+    <div class="logo">
+      <img src="assets/images/logo.png" alt="Bytebank Logo" />
+    </div>
+  
+    <span class="spacer"></span>
+  
+    <button mat-icon-button>
+      <img src="assets/images/avatar.png" alt="User" class="avatar" />
+    </button>
+  </mat-toolbar>
+}
 
