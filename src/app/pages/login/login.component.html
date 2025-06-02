@@ -32,8 +32,11 @@
           formControlName="email"
           required
         />
-        @if (form.controls.email.invalid && (form.controls.email.dirty || form.controls.email.touched)) {
+        @if (form.controls.email.getError('required') && (form.controls.email.dirty || form.controls.email.touched)) {
           <mat-error>Email is required</mat-error>
+        }
+        @if (form.controls.email.getError('pattern') && (form.controls.email.dirty || form.controls.email.touched)) {
+          <mat-error>Please fill a valid email. <i>Ex.: {{"user@example.com"}}</i></mat-error>
         }
       </mat-form-field>
 
