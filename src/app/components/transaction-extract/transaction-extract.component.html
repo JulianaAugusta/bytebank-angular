@@ -18,7 +18,7 @@
 
       <div class="info">
         <span> {{ t.type === "income" ? "Depósito" : "Transferência" }}</span>
-        <small>{{ t.date | date : "MMMM d, y" : undefined : "pt-BR" }}</small>
+        <small>{{ t.date | date : "dd/MM/yyyy" : undefined : "pt-BR" }}</small>
       </div>
 
       <div
@@ -32,17 +32,13 @@
       </div>
 
       <div class="actions">
-        <button mat-icon-button (click)="openEditModal(t)">
-          <mat-icon>edit</mat-icon>
-        </button>
+        <span (click)="openEditModal(t)">
+          <mat-icon class="icon-settings" fontSet="material-symbols-outlined">edit</mat-icon>
+        </span>
 
-        <button
-          mat-icon-button
-          color="warn"
-          (click)="deleteTransaction(t.id, t.description)"
-        >
-          <mat-icon>delete</mat-icon>
-        </button>
+        <span color="warn" (click)="deleteTransaction(t.id, t.description)">
+          <mat-icon class="icon-settings" fontSet="material-symbols-outlined">delete</mat-icon>
+        </span>
       </div>
     </div>
   </div>
