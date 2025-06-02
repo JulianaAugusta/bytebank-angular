@@ -1,8 +1,9 @@
 @import 'base';
 
 footer {
+  height: 7rem;
   background-color: $gray-700;
-  padding: $padding-2x-large $padding-3x-large;
+  padding: $padding-2x-large 0;
   color: $white;
 
   .footer-content {
@@ -27,7 +28,7 @@ footer {
         margin: 0;
 
         li {
-          margin-bottom: 0.75rem;
+          margin-bottom: 0.5rem;
 
           &:last-child {
             margin-bottom: 0;
