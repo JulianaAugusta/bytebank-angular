@@ -1,3 +1,39 @@
+@import 'base';
+
+.home-navbar {
+  height: 5rem;
+  justify-content: center;
+  padding: $padding-extra-large $padding-3x-large;
+  background-color: $gray-700;
+
+  .nav-content {
+    @include flex-row(space-between, center);
+    width: 80%;
+  }
+
+  a {
+    color: $secondary-200;
+    text-decoration: none;
+    font-size: $body-medium;
+    padding: $padding-x-small $padding-large;
+    transition: color 0.3s;
+
+    &:hover {
+      background: rgba(52, 58, 64, 0.23);
+      color: $primary-400;
+      border-radius: $border-radius-medium;
+    }
+  }
+
+  .bytebank-pages, .actions-login {
+    @include flex-row(space-between, center);
+
+    .logo {
+      margin-right: 1rem;
+    }
+  }
+}
+
 .navbar {
   height: 4rem;
   background-color: white;

@@ -2,82 +2,88 @@
 @import 'base';
 
 :host {
-  @include flex-row(center, center);
-  height: 100%;
+  ::ng-deep {
+    .mat-mdc-dialog-content {
+      margin: auto;  
+      text-align: center;
+      padding: 0 4rem;
+    }
+    .mat-mdc-dialog-actions {
+      justify-content: end;
+    }
+  }
 }
 
-.main {
-  @include flex-row(center, center);
-  width: 100%;
-  height: 100%;
-  background: $login-gradient-bg;
+.branding {
+  text-align: center;
+  margin-bottom: $margin-medium;
 
-  .branding,
-  .login-container {
-    @include flex-row(center, center);
-    flex: 1;
-    height: 100%;
+  img {
+    width: 16rem;
+  }
+}
+
+.login-container {
+  @include flex-column(flex-start, center);
+
+  .signin-div {
+    margin-bottom: $margin-large;
+    font-size: $body-medium;
+    color: $secondary-300;
   }
 
-  .branding {
-    background: $secondary-600;
-    border-radius: 0 $border-radius-extra-large $border-radius-extra-large 0;
+  form {
+    @include flex-column(flex-start, stretch);
+    width: 100%;
+    box-sizing: border-box;
+    
+    .button-wrapper {
+      @include flex-row(space-between, flex-start);
+      margin-top: $margin-small;
 
-    img {
-      width: 40%;
-      opacity: 1;
-    }
-  }
+      button {
+        @include button(
+          $primary, 
+          $white, 
+          $padding-medium, 
+          $border-radius-large
+        );
+        font-size: $body-medium;
+        border: 1px solid $primary-400;
+        width: 150px;
+      }
 
-  .login-container {
-    @include flex-column(center, center);
-    padding: 0 $padding-3x-large;
+      p.signup-text {
+        color: $white;
+        font-size: $body-small;
+        margin: 0;
 
-    .signin-div {
-      width: 80%;
-      color: $white;
-    }
+        a {
+          cursor: pointer;
+          color: darken($primary, 10%);
+          text-decoration: none;
+          font-weight: bold;
+          transition: color 0.3s ease;
 
-    form {
-      @include flex-column(flex-start, stretch);
-      width: 80%;
-      box-sizing: border-box;
-      
-      .button-wrapper {
-        @include flex-row(space-between, flex-start);
-        margin-top: $margin-small;
-
-        button {
-          @include button(
-            $primary, 
-            $white, 
-            $padding-medium, 
-            $border-radius-large
-          );
-          font-size: $body-medium;
-          border: 1px solid $primary-400;
-          width: 150px;
-        }
-
-        p.singup-text {
-          color: $white;
-          font-size: $body-small;
-          margin: 0;
-
-          a {
-            cursor: pointer;
-            color: darken($primary, 10%);
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-
-            &:hover {
-              color: darken($primary, 20%);
-            }
+          &:hover {
+            color: darken($primary, 20%);
           }
         }
       }
     }
-    
+  }
+}
+
+button.action-btn {
+  @include button(
+    $orange-400, 
+    $white, 
+    $padding-medium, 
+    $border-radius-large
+  );
+  font-weight: 300;
+
+  &.cancel {
+    background: $secondary-200;
   }
 }

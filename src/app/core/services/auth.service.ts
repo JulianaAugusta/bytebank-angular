@@ -53,7 +53,7 @@ export class AuthService implements IAuthService {
 
   public logout(): void {
     localStorage.clear();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/home']);
   }
 
   getTokenPayload(): User & {exp: number} | null {
