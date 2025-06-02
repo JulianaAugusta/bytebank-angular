@@ -1,12 +1,14 @@
 import { AuthService } from '@core/services/auth.service';
 import { CommonModule } from '@angular/common';
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
+import { MAT_DIALOG_DATA, MatDialogActions, MatDialogContent, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { NotificationService } from '@shared/services/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -14,11 +16,15 @@ import { Router } from '@angular/router';
   imports: [
     CommonModule, 
     FormsModule,
+    MatDialogActions,
+    MatDialogContent,
     MatButtonModule,
+    MatDialogModule,
     MatFormFieldModule, 
     MatIconModule,
     MatInputModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButtonModule,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
@@ -26,51 +32,53 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   auth = inject(AuthService);
   router = inject(Router);
-  
+  notificationService = inject(NotificationService); 
+  dialogRef = inject(MatDialogRef<LoginComponent>);
+  signupData = inject<boolean>(MAT_DIALOG_DATA);
+
   showPassword = signal(false);
-  singupMode = signal(false);
+  signupMode = computed(() => !!this.signupData);
 
   form = new FormGroup({
     email: new FormControl('', Validators.required),
-    name: new FormControl('', this.singupMode() ? Validators.required : null),
+    name: new FormControl('', this.signupMode() ? Validators.required : null),
     password: new FormControl('', Validators.required)
   });
 
   onSubmit() {
     if(this.form.invalid) {
-      this.form.markAsDirty();
+      this.form.markAllAsTouched();
       return
     }
 
     const userData = this.form.getRawValue() as {email: string, name: string, password: string};
-    const req = this.singupMode() ? this.auth.signUp(userData) : this.auth.login(userData);
+    const req = this.signupMode() ? this.auth.signUp(userData) : this.auth.login(userData);
     req.subscribe({
       next: () => {
-        if(this.singupMode()) this.toggleSingup();
-        this.router.navigate(['/']);
+        if(this.signupMode()) {
+          this.notificationService.showToast('User created! Please log in.', 'success');
+          this.dialogRef.close();
+          return
+        };
+        this.notificationService.showToast('Login successful', 'success');
+        this.dialogRef.close();
+        this.router.navigate(['/dashboard']);
       },
-      error: err => {
-        //@to do implementar toast service
-        console.log(err);
-        if (this.singupMode()) {
+      error: () => {
+        this.notificationService.showToast('An error occurred', 'error');
+        if (this.signupMode()) {
           this.form.get('email')?.setErrors({emailExists: true});
         }
       }
     }); 
   }
 
-  togglePassword() {
+  togglePassword(): void {
     this.showPassword.update(v => !v);
   }
 
-  toggleSingup() {
-    this.singupMode.update(v => !v);
-
-    //@to do: após cadastro, remover invalidez dos campos
-    this.form = new FormGroup({
-      email: new FormControl('', Validators.required),
-      name: new FormControl('', this.singupMode() ? Validators.required : null),
-      password: new FormControl('', Validators.required)
-    });
+  onCancelClick(): void {
+    this.dialogRef.close();
   }
+
 }

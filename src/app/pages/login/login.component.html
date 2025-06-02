@@ -1,17 +1,18 @@
-<div class="main">
+<!-- <div class="main">
   <div class="branding">
-    <img src="assets/images/logo.png" alt="">
+    <img class="logo" src="assets/images/logo-white.png" alt="Logo">
+    <img class="illustration" [src]="signupMode() ? 'assets/images/signup.png': 'assets/images/signin.png'" alt="">
   </div>
   <div class="login-container">
     <div class="signin-div">
-      <h1>{{singupMode() ? 'Sign up' : 'Sing in'}}</h1>
+      <h1>{{signupMode() ? 'Sign up' : 'Sign in'}}</h1>
       <p class="login-message">
-        Welcome! Please enter your credentials to {{singupMode() ? 'register' : 'access'}} your account.
+        Welcome! Please enter your credentials to {{signupMode() ? 'register' : 'access'}} your account.
       </p>
     </div>
 
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      @if(singupMode()) {
+      @if(signupMode()) {
         <mat-form-field>
           <mat-label>Enter your name</mat-label>
           <input
@@ -57,13 +58,87 @@
       </mat-form-field>
 
       <div class="button-wrapper">
-        @if(singupMode()) {
-          <p class="singup-text">Already have an account? <a (click)="toggleSingup()">Sign in</a></p>
+        @if(signupMode()) {
+          <p class="signup-text">Already have an account? <a (click)="toggleSignup()">Sign in</a></p>
         } @else {
-          <p class="singup-text">Don't have an account? <a (click)="toggleSingup()">Sign up</a></p>
+          <p class="signup-text">Don't have an account? <a (click)="toggleSignup()">Sign up</a></p>
         }
-        <button type="submit">{{singupMode() ? 'Create account' : 'Login'}}</button>
+        <button type="submit">{{signupMode() ? 'Create account' : 'Login'}}</button>
       </div>
     </form>
   </div>
-</div>
+</div> -->
+
+<mat-dialog-content>
+  <div class="branding">
+    <img class="illustration" [src]="signupMode() ? 'assets/images/signup.png': 'assets/images/signin.png'" alt="">
+  </div>
+  <div class="login-container">
+    <div class="signin-div">
+      <p class="login-message">
+        Welcome! Please enter your credentials to {{signupMode() ? 'register' : 'access'}} your account.
+      </p>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      @if(signupMode()) {
+        <mat-form-field>
+          <mat-label>Enter your name</mat-label>
+          <input
+            matInput
+            formControlName="name"
+            required
+          />
+          @if (form.controls.name.invalid && (form.controls.name.dirty || form.controls.name.touched)) {
+            <mat-error>Name is required</mat-error>
+          }
+        </mat-form-field>
+      }
+      
+      <mat-form-field>
+        <mat-label>Enter your email</mat-label>
+        <input
+          matInput
+          placeholder="user@example.com"
+          formControlName="email"
+          required
+        />
+        @if (form.controls.email.invalid && (form.controls.email.dirty || form.controls.email.touched)) {
+          <mat-error>Email is required</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Enter your password</mat-label>
+        <input 
+          matInput 
+          [attr.type]="showPassword() ? 'text' : 'password'" 
+          formControlName="password"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          type="button"
+          (click)="togglePassword()"
+          [attr.aria-label]="'Hide password'"
+        >
+          <mat-icon>{{showPassword() ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        @if (form.controls.password.invalid && (form.controls.password.dirty || form.controls.password.touched)) {
+          <mat-error>Password is required</mat-error>
+        }
+      </mat-form-field>
+    </form>
+  </div>
+  <mat-dialog-actions>
+    <button mat-button class="action-btn cancel" (click)="onCancelClick()">Cancel</button>
+    <button 
+      mat-button 
+      cdkFocusInitial 
+      class="action-btn save" 
+      (click)="onSubmit()"
+    >
+      {{signupMode() ? 'Create account' : 'Login'}}
+    </button>
+  </mat-dialog-actions>
+</mat-dialog-content>
