@@ -1,22 +1,30 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { AccountBalanceComponent } from '../../components/account-balance/account-balance.component';
-import { TransactionExtractComponent } from '../../components/transaction-extract/transaction-extract.component';
-import { NewTransactionComponent } from '../../components/new-transaction/new-transaction.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { NavbarComponent } from '@shared/components/navbar/navbar.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [AccountBalanceComponent, TransactionExtractComponent, NewTransactionComponent],
+  imports: [
+    CommonModule, 
+    FormsModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatFormFieldModule, 
+    MatIconModule,
+    MatInputModule, 
+    ReactiveFormsModule,
+    NavbarComponent
+  ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
+  styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  userName = 'Juliana';
-
-  get greeting(): string {
-    const currentHour = new Date().getHours();
-    if (currentHour < 12) return 'Bom dia';
-    if (currentHour < 18) return 'Boa tarde';
-    return 'Boa noite';
-  }
+  
 }
