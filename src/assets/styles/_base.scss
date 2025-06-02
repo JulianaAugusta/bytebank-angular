@@ -10,7 +10,7 @@ $my-theme: mat.m2-define-light-theme((
     accent: mat.m2-define-palette(mat.$m2-orange-palette),
     warn: mat.m2-define-palette(mat.$m2-red-palette),
   ),
-  typography: mat.m2-define-typography-config(),
+  typography: mat.m2-define-typography-config(Poppins),
   density: 0
 ));
 
@@ -22,5 +22,5 @@ html, body {
 
 body { 
   margin: 0; 
-  font-family: Roboto, "Helvetica Neue", Arial, sans-serif; 
+  font-family: Poppins, "Helvetica Neue", Arial, sans-serif !important; 
 }
