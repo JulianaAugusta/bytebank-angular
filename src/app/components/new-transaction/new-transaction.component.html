@@ -1,4 +1,4 @@
-<section class="new-transaction-form">
+<mat-card class="new-transaction-form">
   <h3 class="title">Nova Transação</h3>
 
   <mat-form-field appearance="outline" class="full-width">
@@ -9,25 +9,19 @@
     </mat-select>
   </mat-form-field>
 
-  <div class="container-form">
-    <mat-form-field appearance="outline" class="full-width">
+    <mat-form-field appearance="outline" class="input-middle">
       <mat-label>Valor:</mat-label>
       <input matInput type="number" [(ngModel)]="amount" />
     </mat-form-field>
 
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Data:</mat-label>
-      <input matInput type="date" [(ngModel)]="transactionDate" />
-    </mat-form-field>
-  </div>
+    <button
+      mat-flat-button
+      color="primary"
+      class="submit-btn input-middle"
+      [disabled]="!transactionType || amount === null"
+      (click)="submitTransaction()"
+    >
+      Enviar
+    </button>
 
-  <button
-    mat-flat-button
-    color="primary"
-    class="submit-btn"
-    [disabled]="!transactionType || amount === null"
-    (click)="submitTransaction()"
-  >
-    Enviar
-  </button>
-</section>
+</mat-card>

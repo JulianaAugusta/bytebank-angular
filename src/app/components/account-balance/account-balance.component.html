@@ -2,11 +2,11 @@
   <div class="header">
     <div class="left">
       <span>Saldo</span>
-      <button mat-icon-button (click)="toggleBalanceVisibility()">
+      <span (click)="toggleBalanceVisibility()">
         <mat-icon fontSet="material-symbols-outlined">
           {{ showBalance ? "visibility_off" : "visibility" }}
         </mat-icon>
-      </button>
+      </span>
     </div>
     <span class="date">{{ formattedCurrentDate }}</span>
   </div>

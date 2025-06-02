@@ -35,17 +35,35 @@ export class TransactionExtractComponent {
 
   private loadTransactions(): void {
     this.transactionService.getTransactions().subscribe((transactions) => {
+      transactions.sort(
+        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+      );
       const grouped = groupBy(transactions, (t) => {
-        const date = new Date(t.date);
-        return date.toLocaleString('pt-BR', { month: 'long' });
+        const d = new Date(t.date);
+        const year = d.getFullYear();
+        const month = String(d.getMonth() + 1).padStart(2, '0');
+        return `${year}-${month}`;
       });
 
-      this.groupedTransactions = Object.entries(grouped).map(
-        ([month, transactions]) => ({
-          month,
+      const sortedEntries = Object.entries(grouped).sort((a, b) => {
+        const dateA = new Date(a[0] + '-01');
+        const dateB = new Date(b[0] + '-01');
+        return dateB.getTime() - dateA.getTime();
+      });
+
+      this.groupedTransactions = sortedEntries.map(([key, transactions]) => {
+        const sampleDate = new Date(`${key}-01`);
+        const formattedMonth = sampleDate.toLocaleDateString('pt-BR', {
+          month: 'long',
+          year: 'numeric',
+          timeZone: 'UTC',
+        });
+
+        return {
+          month: formattedMonth,
           transactions,
-        })
-      );
+        };
+      });
     });
   }
 
