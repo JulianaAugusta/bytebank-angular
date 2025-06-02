@@ -6,6 +6,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { FooterComponent } from '@shared/components/footer/footer.component';
 import { NavbarComponent } from '@shared/components/navbar/navbar.component';
 
 @Component({
@@ -14,6 +15,7 @@ import { NavbarComponent } from '@shared/components/navbar/navbar.component';
   imports: [
     CommonModule, 
     FormsModule,
+    FooterComponent,
     MatButtonModule,
     MatDialogModule,
     MatFormFieldModule, 

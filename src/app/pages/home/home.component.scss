@@ -1,6 +1,92 @@
 @import 'base';
 
 .home {
-  height: 100%;
-  background: $login-gradient-bg;
+  @include flex-column(space-between, stretch);
+  min-height: 100vh;
+  background: $home-gradient-bg;
+
+  app-navbar {
+    flex: 0 0 auto;
+  }
+
+  .main {
+    @include flex-column(space-around, center);
+    flex: 1 0 0;
+    padding: 2rem 4.5rem;
+    overflow-y: auto;
+
+    section {
+      width: 100%;
+
+      &.introduction {
+        @include flex-row(center, center, 4rem);
+
+        span {
+          width: 25%;
+          color: $secondary-600;
+          font-weight: 600;
+          font-size: $body-large;
+        }
+
+        img {
+          width: 35%;
+        }
+      }
+
+      &.advantages {
+        @include flex-column(space-between, center, $gap-extra-large);
+        max-width: 100%;
+
+        span {
+          color: $secondary-600;
+          font-size: $body-large;
+          font-weight: 600;
+        }
+
+        .advantages-items {
+          @include flex-row(center, flex-start, $gap-extra-large);
+          flex-wrap: wrap;
+          width: 100%;
+
+          .item {
+            @include flex-column(center, center);
+            flex: 1 1 20%; 
+            max-width: 25%; 
+
+            @media (max-width: 900px) {
+              flex: 1 1 45%; 
+              max-width: 50%;
+            }
+
+            @media (max-width: 600px) {
+              flex: 1 1 95%; 
+              max-width: 100%;
+            }
+
+            img {
+              width: 4rem;
+              height: 4rem;
+            }
+
+            p {
+              color: $green-500;
+              margin: 0;
+              font-weight: 700;
+              font-size: $body-medium;
+            }
+
+            small {
+              color: $gray-400;
+              text-align: center;
+              font-size: $body-small;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  app-footer {
+    flex: 0 0 auto;
+  }
 }
