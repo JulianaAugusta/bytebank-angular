@@ -2,7 +2,7 @@ import { inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Router } from '@angular/router';
 import { IAuthService } from '@core/interfaces/auth.interface';
 import { User } from '@core/models/user';
-import { map, Observable, switchMap, tap } from 'rxjs';
+import { map, Observable, of, switchMap, tap, throwError } from 'rxjs';
 import { UserService } from './user.service';
 import { isPlatformBrowser } from '@angular/common';
 import { hashPassword } from '@shared/utils';
@@ -18,14 +18,25 @@ export class AuthService implements IAuthService {
 
   public login(formLogin: Partial<User>): Observable<boolean> {
     return this.userService.getUsers().pipe(
-      map((users: User[]) => users.find(user => user.email === formLogin.email && user.password === hashPassword(formLogin.password ?? '')) || null), //o uso do || null indica que, caso não encontrado usuário, ao invés de retornar undefined, deve retornar null
+      map((users: User[]) =>
+        users.find(user =>
+          user.email === formLogin.email &&
+          user.password === hashPassword(formLogin.password ?? '')
+        ) || null
+      ),
       tap(user => {
         if (user && isPlatformBrowser(this.platformId)) {
           this._generateJwt(user);
           this.userService.setLoggedInUser(user);
         }
       }),
-      map(user => !!user) // Converte o usuário encontrado em um booleano (true se encontrado, false caso contrário)
+      switchMap(user => { //uso do switch para retorno de observable
+        if (user) {
+          return of(true);
+        } else {
+          return throwError(() => new Error('Invalid credentials'));
+        }
+      })
     );
   }
 

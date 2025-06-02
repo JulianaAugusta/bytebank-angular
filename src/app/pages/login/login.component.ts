@@ -40,8 +40,11 @@ export class LoginComponent {
   signupMode = computed(() => !!this.signupData);
 
   form = new FormGroup({
-    email: new FormControl('', Validators.required),
-    name: new FormControl('', this.signupMode() ? Validators.required : null),
+    email: new FormControl('', [Validators.required, Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)]),
+    name: new FormControl('', this.signupMode() ? [
+      Validators.required, 
+      Validators.pattern(/^(?!\s)(?!.*^\s+$).+/)
+    ] : Validators.pattern(/^(?!\s)(?!.*^\s+$).+/)),
     password: new FormControl('', Validators.required)
   });
 
@@ -65,7 +68,7 @@ export class LoginComponent {
         this.router.navigate(['/dashboard']);
       },
       error: () => {
-        this.notificationService.showToast('An error occurred', 'error');
+        this.notificationService.showToast('Invalid credentials', 'error');
         if (this.signupMode()) {
           this.form.get('email')?.setErrors({emailExists: true});
         }
