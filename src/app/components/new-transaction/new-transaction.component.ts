@@ -6,11 +6,19 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { TransactionService } from '@core/services/transaction.service';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { UserService } from '@core/services/user.service';
 import { Transaction } from '@shared/models';
 import { NotificationService } from '@shared/services/notification.service';
+import { LOCALE_ID } from '@angular/core';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+
+registerLocaleData(localePt);
 
 @Component({
   selector: 'app-new-transaction',
@@ -24,9 +32,15 @@ import { NotificationService } from '@shared/services/notification.service';
     MatInputModule,
     MatButtonModule,
     MatCardModule,
-    NgxMaskDirective
+    NgxMaskDirective,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
-  providers: [provideNgxMask()],
+  providers: [
+    provideNgxMask(),
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
+    { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
+  ],
   templateUrl: './new-transaction.component.html',
   styleUrl: './new-transaction.component.scss',
 })
@@ -37,6 +51,7 @@ export class NewTransactionComponent {
 
   transactionType: 'Received' | 'Sent' | null = null;
   amount: number | null = null;
+  transactionDate: Date | null = null;
 
   submitTransaction(): void {
     if (this.transactionType && this.amount !== null) {
@@ -44,7 +59,7 @@ export class NewTransactionComponent {
         userId: this.userID,
         type: this.transactionType === 'Received' ? 'income' : 'expense',
         amount: Number(this.amount),
-        date: new Date().toISOString(),
+        date: this.transactionDate?.toISOString() ?? new Date().toISOString(),
         description:
           this.transactionType === 'Received' ? 'Recebida' : 'Enviada',
         category: 'Pix',

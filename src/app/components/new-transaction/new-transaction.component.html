@@ -9,28 +9,39 @@
     </mat-select>
   </mat-form-field>
 
-    <mat-form-field appearance="outline" class="input-middle">
-      <mat-label>Valor:</mat-label>
-      <input     
-        matInput
-        type="text"
-        mask="separator.2"
-        thousandSeparator="."
-        decimalMarker=","
-        prefix="R$ "
-        [ngModel]="amount"
-        (ngModelChange)="amount = $event" 
-      />
-    </mat-form-field>
+  <mat-form-field appearance="outline" class="input-middle">
+    <mat-label>Valor:</mat-label>
+    <input
+      matInput
+      type="text"
+      mask="separator.2"
+      thousandSeparator="."
+      decimalMarker=","
+      prefix="R$ "
+      [ngModel]="amount"
+      (ngModelChange)="amount = $event"
+    />
+  </mat-form-field>
 
-    <button
-      mat-flat-button
-      color="primary"
-      class="submit-btn input-middle"
-      [disabled]="!transactionType || amount === null"
-      (click)="submitTransaction()"
-    >
-      Enviar
-    </button>
+  <mat-form-field appearance="outline" class="input-middle">
+    <mat-label>Data</mat-label>
+    <input
+      matInput
+      [matDatepicker]="picker"
+      [(ngModel)]="transactionDate"
+      placeholder="Escolha uma data"
+    />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
 
+  <button
+    mat-flat-button
+    color="primary"
+    class="submit-btn input-middle"
+    [disabled]="!transactionType || amount === null || !transactionDate"
+    (click)="submitTransaction()"
+  >
+    Enviar
+  </button>
 </mat-card>
