@@ -27,7 +27,7 @@ export class NavbarComponent implements OnInit {
   dialog = inject(MatDialog);
   router = inject(Router);
   currentUrl = signal(this.router.url);
-  isHomePage = computed(() => this.currentUrl() === '/home');
+  isHomePage = computed(() => this.currentUrl() === '/home' || '/not-found');
   isMobile = signal(false);
   isMenuOpen = signal(false);
 
