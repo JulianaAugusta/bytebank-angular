@@ -17,6 +17,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
+import { UserService } from '@core/services/user.service';
+import { Transaction } from '@shared/models';
+import { NotificationService } from '@shared/services/notification.service';
 
 registerLocaleData(localePt);
 
