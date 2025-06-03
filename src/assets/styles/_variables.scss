@@ -21,6 +21,7 @@ $padding-3x-large: 2.5rem;
 $margin-small: 0.5rem;
 $margin-medium: 0.75rem;
 $margin-large: 1rem;
+$margin-x-large: 2rem;
 
 $gap-small: 0.25rem;
 $gap-medium: 0.5rem;
@@ -34,6 +35,7 @@ $border-radius-extra-large: 2rem;
 
 $box-shadow-input: 0 0 0.25rem rgba($gray-300, 0.5);
 $box-shadow-card: 0 0 0.25rem rgba($gray-200, 0.5);
+$box-shadow-side-menu: 0.25rem 0 0.5rem rgba($gray-500, 0.48);
 
 $login-gradient-bg: radial-gradient(circle, $primary-200 0%, $primary-400 75%);
 $home-gradient-bg: linear-gradient(to bottom, $primary-500 0%, $primary-100 75%);
