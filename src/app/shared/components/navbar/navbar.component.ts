@@ -47,10 +47,6 @@ export class NavbarComponent implements OnInit {
   
 
   openAccountDialog(signupMode: boolean): void {
-    const dialogRef = this.dialog.open(LoginComponent, { data: signupMode, height: '80%' });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
-    });
+    this.dialog.open(LoginComponent, { data: signupMode, height: '80%' });
   }
 }

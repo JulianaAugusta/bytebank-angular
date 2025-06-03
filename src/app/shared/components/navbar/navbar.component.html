@@ -6,12 +6,12 @@
           <div class="logo">
             <img src="assets/images/logo.png" alt="Bytebank Logo"/>
           </div>
-          <a routerLink="/sobre">About</a>
-          <a routerLink="/sobre">Services</a>
+          <a routerLink="/sobre">Sobre</a>
+          <a routerLink="/sobre">Serviços</a>
         </div>
         <div class="actions-login">
-          <a (click)="openAccountDialog(true)">Open my account</a>
-          <a (click)="openAccountDialog(false)">Access</a>
+          <a (click)="openAccountDialog(true)">Abrir minha conta</a>
+          <a (click)="openAccountDialog(false)">Já tenho conta</a>
         </div>
       </div>
     } @else {
@@ -45,7 +45,7 @@
     <button mat-icon-button class="close-btn" (click)="toggleMenu()">
       <mat-icon>close</mat-icon>
     </button>
-    <a routerLink="/sobre" (click)="toggleMenu()">About</a>
-    <a routerLink="/sobre" (click)="toggleMenu()">Services</a>
+    <a routerLink="/sobre" (click)="toggleMenu()">Sobre</a>
+    <a routerLink="/sobre" (click)="toggleMenu()">Serviços</a>
   </nav>
 }
