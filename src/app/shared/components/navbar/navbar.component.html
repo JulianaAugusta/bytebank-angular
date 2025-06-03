@@ -1,18 +1,29 @@
 @if(isHomePage()) {
   <mat-toolbar class="home-navbar">
-    <div class="nav-content">
-      <div class="bytebank-pages">
+    @if(!isMobile()) {
+      <div class="nav-content">
+        <div class="bytebank-pages">
+          <div class="logo">
+            <img src="assets/images/logo.png" alt="Bytebank Logo"/>
+          </div>
+          <a routerLink="/sobre">About</a>
+          <a routerLink="/sobre">Services</a>
+        </div>
+        <div class="actions-login">
+          <a (click)="openAccountDialog(true)">Open my account</a>
+          <a (click)="openAccountDialog(false)">Access</a>
+        </div>
+      </div>
+    } @else {
+      <div class="nav-content">
+        <button mat-icon-button (click)="toggleMenu()">
+          <mat-icon fontIcon="menu">menu</mat-icon>
+        </button>
         <div class="logo">
           <img src="assets/images/logo.png" alt="Bytebank Logo"/>
         </div>
-        <a routerLink="/sobre">About</a>
-        <a routerLink="/sobre">Services</a>
       </div>
-      <div class="actions-login">
-        <a (click)="openAccountDialog(true)">Open my account</a>
-        <a (click)="openAccountDialog(false)">Access</a>
-      </div>
-    </div>
+    }
   </mat-toolbar>
 } @else {
   <mat-toolbar color="primary" class="navbar">
@@ -26,4 +37,15 @@
       <img src="assets/images/avatar.png" alt="User" class="avatar" />
     </button>
   </mat-toolbar>
+}
+
+@if(isMenuOpen()) {
+  <div class="side-menu-backdrop" (click)="toggleMenu()"></div>
+  <nav class="side-menu">
+    <button mat-icon-button class="close-btn" (click)="toggleMenu()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <a routerLink="/sobre" (click)="toggleMenu()">About</a>
+    <a routerLink="/sobre" (click)="toggleMenu()">Services</a>
+  </nav>
 }
