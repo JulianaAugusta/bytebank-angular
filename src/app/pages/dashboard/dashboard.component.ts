@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AccountBalanceComponent } from '../../components/account-balance/account-balance.component';
 import { TransactionExtractComponent } from '../../components/transaction-extract/transaction-extract.component';
 import { NewTransactionComponent } from '../../components/new-transaction/new-transaction.component';
+import { UserService } from '@core/services/user.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,7 +12,7 @@ import { NewTransactionComponent } from '../../components/new-transaction/new-tr
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent {
-  userName = 'Juliana';
+  username: string | null = inject(UserService).loggedInUser?.name ?? null;
 
   get greeting(): string {
     const currentHour = new Date().getHours();
