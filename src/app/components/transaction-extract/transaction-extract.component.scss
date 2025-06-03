@@ -23,35 +23,42 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 0.5rem;
     padding: 0.5rem 0;
     border-bottom: 1px solid #f0f0f0;
+    flex-wrap: nowrap;
 
     .icon {
       font-size: 20px;
-      &.income {
-        color: #00995d;
-      }
-
-      &.expense {
-        color: #d32f2f;
-      }
+      flex-shrink: 0;
     }
 
     .info {
       flex: 1;
+      min-width: 0;
+      overflow: hidden;
+
       span {
         font-weight: 500;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
       }
+
       small {
         display: block;
         color: #777;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
 
     .amount {
       font-weight: bold;
-      align-self: start;
+      white-space: nowrap;
+      flex-shrink: 0;
 
       &.income {
         color: #00995d;
@@ -65,14 +72,14 @@
 
   .actions {
     display: flex;
-    align-self: start;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
 
     button {
       border: none;
       background: none;
-      box-shadow: none;
       padding: 4px;
-      margin: 0;
       min-width: unset;
       min-height: unset;
       display: flex;
@@ -83,11 +90,10 @@
 
     .icon-settings {
       font-size: 16px;
-      cursor: pointer;
     }
 
     .icon-settings:hover {
-      color: #EB6A1C;
+      color: #eb6a1c;
     }
   }
 

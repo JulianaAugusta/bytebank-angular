@@ -29,7 +29,7 @@ export class InMemoryService implements InMemoryDbService {
         type: 'income',
         category: 'Salary',
         account: 'Bank Account',
-        notes: 'Monthly salary',
+        notes: 'Salário do mês',
         tags: ['salary', 'income']
       },
       {
@@ -41,7 +41,7 @@ export class InMemoryService implements InMemoryDbService {
         type: 'expense',
         category: 'Food',
         account: 'Bank Account',
-        notes: 'Weekly groceries',
+        notes: 'Lanches de sexta',
         tags: ['food', 'groceries']
       },
       {
@@ -53,11 +53,11 @@ export class InMemoryService implements InMemoryDbService {
         type: 'expense',
         category: 'Utilities',
         account: 'Bank Account',
-        notes: 'Monthly electricity bill',
+        notes: 'Conta de Luz',
         tags: ['utilities', 'bill']
       }
     ];
-    
+
     return { users, transactions };
   }
 }
