@@ -22,5 +22,13 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/dashboard/dashboard.component').then(m => m.DashboardComponent)
       },
     ]
+  },
+  {
+    path: 'not-found',
+    loadComponent: () => import('./pages/not-found/not-found.component').then(m => m.NotFoundComponent)
+  },
+  { 
+    path: '**', 
+    redirectTo: 'not-found'
   }
 ];

@@ -22,6 +22,7 @@ export class InMemoryService implements InMemoryDbService {
     const transactions: Transaction[] = [
       {
         id: 1,
+        userId: 1,
         date: '2023-10-01',
         description: 'Salary',
         amount: 5000,
@@ -33,6 +34,7 @@ export class InMemoryService implements InMemoryDbService {
       },
       {
         id: 2,
+        userId: 1,
         date: '2023-10-02',
         description: 'Groceries',
         amount: 150,
@@ -44,6 +46,7 @@ export class InMemoryService implements InMemoryDbService {
       },
       {
         id: 3,
+        userId: 1,
         date: '2023-10-03',
         description: 'Electricity Bill',
         amount: 100,

@@ -2,10 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule, CurrencyPipe, DatePipe } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
-import {
-  Transaction,
-  TransactionService,
-} from '@core/services/transaction.service';
+import { TransactionService } from '@core/services/transaction.service';
+import { Transaction } from '@shared/models';
 
 @Component({
   selector: 'app-account-balance',
