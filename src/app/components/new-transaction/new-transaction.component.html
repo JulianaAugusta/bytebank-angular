@@ -11,7 +11,16 @@
 
     <mat-form-field appearance="outline" class="input-middle">
       <mat-label>Valor:</mat-label>
-      <input matInput type="number" [(ngModel)]="amount" />
+      <input     
+        matInput
+        type="text"
+        mask="separator.2"
+        thousandSeparator="."
+        decimalMarker=","
+        prefix="R$ "
+        [ngModel]="amount"
+        (ngModelChange)="amount = $event" 
+      />
     </mat-form-field>
 
     <button

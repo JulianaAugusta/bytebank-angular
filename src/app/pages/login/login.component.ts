@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
 import { MAT_DIALOG_DATA, MatDialogActions, MatDialogContent, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { NotificationService } from '@shared/services/notification.service';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-login',
@@ -16,15 +17,15 @@ import { NotificationService } from '@shared/services/notification.service';
   imports: [
     CommonModule, 
     FormsModule,
+    MatButtonModule,
+    MatCheckboxModule,
     MatDialogActions,
     MatDialogContent,
-    MatButtonModule,
     MatDialogModule,
     MatFormFieldModule, 
     MatIconModule,
     MatInputModule, 
-    ReactiveFormsModule,
-    MatButtonModule,
+    ReactiveFormsModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
@@ -40,8 +41,11 @@ export class LoginComponent {
   signupMode = computed(() => !!this.signupData);
 
   form = new FormGroup({
-    email: new FormControl('', Validators.required),
-    name: new FormControl('', this.signupMode() ? Validators.required : null),
+    email: new FormControl('', [Validators.required, Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)]),
+    name: new FormControl('', this.signupMode() ? [
+      Validators.required, 
+      Validators.pattern(/^(?!\s)(?!.*^\s+$).+/)
+    ] : Validators.pattern(/^(?!\s)(?!.*^\s+$).+/)),
     password: new FormControl('', Validators.required)
   });
 
@@ -65,7 +69,7 @@ export class LoginComponent {
         this.router.navigate(['/dashboard']);
       },
       error: () => {
-        this.notificationService.showToast('An error occurred', 'error');
+        this.notificationService.showToast('Invalid credentials', 'error');
         if (this.signupMode()) {
           this.form.get('email')?.setErrors({emailExists: true});
         }
