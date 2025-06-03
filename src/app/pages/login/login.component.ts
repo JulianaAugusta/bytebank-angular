@@ -46,8 +46,7 @@ export class LoginComponent {
       Validators.required, 
       Validators.pattern(/^(?!\s)(?!.*^\s+$).+/)
     ] : Validators.pattern(/^(?!\s)(?!.*^\s+$).+/)),
-    password: new FormControl('', Validators.required),
-    agree: new FormControl(false, this.signupMode() ? Validators.requiredTrue : null)
+    password: new FormControl('', Validators.required)
   });
 
   onSubmit() {
