@@ -10,6 +10,7 @@ import {
   TransactionService,
 } from '@core/services/transaction.service';
 import {MatCardModule} from '@angular/material/card';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
 @Component({
   selector: 'app-new-transaction',
@@ -22,8 +23,10 @@ import {MatCardModule} from '@angular/material/card';
     MatSelectModule,
     MatInputModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    NgxMaskDirective
   ],
+  providers: [provideNgxMask()],
   templateUrl: './new-transaction.component.html',
   styleUrl: './new-transaction.component.scss',
 })
