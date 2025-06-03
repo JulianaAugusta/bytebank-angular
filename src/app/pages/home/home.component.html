@@ -9,6 +9,12 @@
       </span>
       <img src="assets/images/banner.png" alt="Banner">
     </section>
+    @if(isMobile()) {
+      <section class="actions-login">
+        <a (click)="openAccountDialog(true)">Open my account</a>
+        <a (click)="openAccountDialog(false)">Access</a>
+      </section>
+    }
     <section class="advantages">
       <span>Advantages of our bank</span>
       <div class="advantages-items">

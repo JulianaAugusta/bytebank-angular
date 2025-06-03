@@ -11,7 +11,7 @@
 
   .main {
     @include flex-column(space-around, center);
-    flex: 1 0 0;
+    // flex: 1 0 0;
     padding: 2rem 4.5rem;
     overflow-y: auto;
 
@@ -19,17 +19,62 @@
       width: 100%;
 
       &.introduction {
-        @include flex-row(center, center, 4rem);
+        @include flex-row(center, center, $gap-extra-large);
+        flex-wrap: wrap;
+        width: 100%;
+        margin-bottom: $margin-x-large;
 
         span {
-          width: 25%;
+          flex: 1 1 25%;
+          max-width: 25%;
           color: $secondary-600;
           font-weight: 600;
           font-size: $body-large;
         }
 
         img {
-          width: 35%;
+          flex: 1 1 35%;
+          max-width: 35%;
+        }
+
+        @media (max-width: 720px) {
+          flex-direction: column;
+          justify-content: center;
+          span, img {
+            text-align: center;
+            flex: 1 1 100%;
+            max-width: 100%;
+          }
+        }
+      }
+
+      &.actions-login {
+        @include flex-row(center, center, $gap-large);
+        margin-bottom: $margin-x-large;
+      
+        a {
+          cursor: pointer;
+          border: 2px solid $black;
+          border-radius: $border-radius-medium;
+          padding: $padding-small;
+          color: white;
+
+          &:nth-of-type(1) {
+            background: $black;
+            margin-right: $margin-medium;
+            
+            &:hover {
+              background: $gray-600;
+            }
+          }
+
+          &:nth-of-type(2) {
+            color: $black;
+            &:hover {
+              color: $white;
+              background: $gray-600;
+            }
+          }
         }
       }
 
