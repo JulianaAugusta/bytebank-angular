@@ -32,17 +32,14 @@
       </div>
 
       <div class="actions">
-        <span (click)="openEditModal(t)">
+        <button (click)="openEditModal(t)">
           <mat-icon class="icon-settings" fontSet="material-symbols-outlined">edit</mat-icon>
-        </span>
+        </button>
 
-        <span color="warn" (click)="deleteTransaction(t.id, t.description)">
+        <button color="warn" (click)="deleteTransaction(t.id, t.description)">
           <mat-icon class="icon-settings" fontSet="material-symbols-outlined">delete</mat-icon>
-        </span>
+        </button>
       </div>
     </div>
   </div>
-
-  <!-- Placeholder para futura paginação -->
-  <!-- <a class="see-more">Veja mais</a> -->
 </div>

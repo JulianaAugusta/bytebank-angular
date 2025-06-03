@@ -78,24 +78,28 @@ export class TransactionExtractComponent {
   openEditModal(transaction: Transaction): void {
     const dialogRef = this.dialog.open(EditTransactionModalComponent, {
       data: { transaction },
-      width: '400px',
+      width: '700px',
+      height: '500px'
     });
 
-    dialogRef.componentInstance.save.subscribe(
-      (updatedTransaction: Transaction) => {
-        this.transactionService
-          .updateTransaction(updatedTransaction)
-          .subscribe(() => {
-            this.loadTransactions();
-            dialogRef.close();
-          });
-      }
-    );
+    dialogRef
+      .afterClosed()
+      .subscribe((updatedTransaction: Transaction | undefined) => {
+        if (updatedTransaction) {
+          this.transactionService
+            .updateTransaction(updatedTransaction)
+            .subscribe(() => {
+              this.loadTransactions();
+            });
+        }
+      });
   }
 
   deleteTransaction(id: number, description: string): void {
     const dialogRef = this.dialog.open(ConfirmDeleteDialogComponent, {
       data: { description },
+      width: '300px',
+      height: '200px'
     });
 
     dialogRef.afterClosed().subscribe((result) => {
