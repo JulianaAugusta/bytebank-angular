@@ -1,45 +1,47 @@
-<div class="main">
+<mat-dialog-content>
   <div class="branding">
-    <img src="assets/images/logo.png" alt="">
+    <img class="illustration" [src]="signupMode() ? 'assets/images/signup.png': 'assets/images/signin.png'" alt="">
   </div>
   <div class="login-container">
     <div class="signin-div">
-      <h1>{{singupMode() ? 'Sign up' : 'Sing in'}}</h1>
       <p class="login-message">
-        Welcome! Please enter your credentials to {{singupMode() ? 'register' : 'access'}} your account.
+        Bem vindo! Preencha os campos abaixo para {{signupMode() ? 'criar' : 'entrar na'}} sua conta corrente.
       </p>
     </div>
 
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      @if(singupMode()) {
+      @if(signupMode()) {
         <mat-form-field>
-          <mat-label>Enter your name</mat-label>
+          <mat-label>Nome</mat-label>
           <input
             matInput
             formControlName="name"
             required
           />
           @if (form.controls.name.invalid && (form.controls.name.dirty || form.controls.name.touched)) {
-            <mat-error>Name is required</mat-error>
+            <mat-error>Nome é obrigatório</mat-error>
           }
         </mat-form-field>
       }
       
       <mat-form-field>
-        <mat-label>Enter your email</mat-label>
+        <mat-label>Email</mat-label>
         <input
           matInput
           placeholder="user@example.com"
           formControlName="email"
           required
         />
-        @if (form.controls.email.invalid && (form.controls.email.dirty || form.controls.email.touched)) {
-          <mat-error>Email is required</mat-error>
+        @if (form.controls.email.getError('required') && (form.controls.email.dirty || form.controls.email.touched)) {
+          <mat-error>Email é obrigatório</mat-error>
+        }
+        @if (form.controls.email.getError('pattern') && (form.controls.email.dirty || form.controls.email.touched)) {
+          <mat-error>Por favor, informe um email válido <i>Ex.: {{"usuário@exemplo.com"}}</i></mat-error>
         }
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label>Enter your password</mat-label>
+        <mat-label>Senha</mat-label>
         <input 
           matInput 
           [attr.type]="showPassword() ? 'text' : 'password'" 
@@ -54,16 +56,30 @@
         >
           <mat-icon>{{showPassword() ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
-      </mat-form-field>
-
-      <div class="button-wrapper">
-        @if(singupMode()) {
-          <p class="singup-text">Already have an account? <a (click)="toggleSingup()">Sign in</a></p>
-        } @else {
-          <p class="singup-text">Don't have an account? <a (click)="toggleSingup()">Sign up</a></p>
+        @if (form.controls.password.invalid && (form.controls.password.dirty || form.controls.password.touched)) {
+          <mat-error>Insira uma senha válida</mat-error>
         }
-        <button type="submit">{{singupMode() ? 'Create account' : 'Login'}}</button>
-      </div>
+      </mat-form-field>
+      <!-- <mat-checkbox class="checkbox" formControlName="agree">
+        <small>
+          Li e estou ciente quanto às condições de tratamento dos meus 
+          dados conforme descrito na Política de Privacidade do banco.
+        </small>
+      </mat-checkbox>
+      @if (form.controls.agree.invalid && (form.controls.agree.dirty || form.controls.agree.touched)) {
+        <mat-error><small>Aceite os termos para continuar</small></mat-error>
+      } -->
+      <mat-dialog-actions>
+        <button mat-button class="action-btn cancel" (click)="onCancelClick()">Cancelar</button>
+        <button 
+          mat-button 
+          cdkFocusInitial 
+          class="action-btn save" 
+          type="submit"
+        >
+          {{signupMode() ? 'Criar conta' : 'Acessar'}}
+        </button>
+      </mat-dialog-actions>
     </form>
   </div>
-</div>
+</mat-dialog-content>

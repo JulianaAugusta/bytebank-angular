@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { Transaction } from '@shared/models';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
 @Component({
   selector: 'app-edit-transaction-modal',
@@ -19,7 +20,9 @@ import { Transaction } from '@shared/models';
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
+    NgxMaskDirective
   ],
+  providers: [provideNgxMask()],
   templateUrl: './edit-transaction-modal.component.html',
   styleUrl: './edit-transaction-modal.component.scss',
 })

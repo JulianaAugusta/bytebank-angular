@@ -35,7 +35,7 @@ export class InMemoryService implements InMemoryDbService {
         id: 2,
         date: '2023-10-02',
         description: 'Groceries',
-        amount: -150, //@todo: validar amount negativo
+        amount: 150,
         type: 'expense',
         category: 'Food',
         account: 'Bank Account',
@@ -46,7 +46,7 @@ export class InMemoryService implements InMemoryDbService {
         id: 3,
         date: '2023-10-03',
         description: 'Electricity Bill',
-        amount: -100,
+        amount: 100,
         type: 'expense',
         category: 'Utilities',
         account: 'Bank Account',
