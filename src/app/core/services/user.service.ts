@@ -9,13 +9,13 @@ import { Observable } from 'rxjs';
 })
 export class UserService implements IUserService {
   private _http = inject(HttpClient)
-  private _loggedInUser = signal<Partial<User> | null>(null);
+  private _loggedInUser = signal<Partial<User>>({});
 
-  get loggedInUser(): Partial<User> | null {
+  get loggedInUser(): Partial<User> {
     return this._loggedInUser();
   }
 
-  setLoggedInUser(user: Partial<User> | null): void {
+  setLoggedInUser(user: Partial<User>): void {
     this._loggedInUser.set(user);
   }
   
