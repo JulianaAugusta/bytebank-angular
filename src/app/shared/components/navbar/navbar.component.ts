@@ -47,6 +47,6 @@ export class NavbarComponent implements OnInit {
   
 
   openAccountDialog(signupMode: boolean): void {
-    this.dialog.open(LoginComponent, { data: signupMode, height: '80%' });
+    this.dialog.open(LoginComponent, { data: signupMode, height: '80%', width: '45%' });
   }
 }

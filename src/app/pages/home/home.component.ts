@@ -42,6 +42,6 @@ export class HomeComponent {
   }
 
   openAccountDialog(signupMode: boolean): void {
-    this.dialog.open(LoginComponent, { data: signupMode, height: '80%' });
+    this.dialog.open(LoginComponent, { data: signupMode, height: '80%', width: '45%' });
   }
 }
