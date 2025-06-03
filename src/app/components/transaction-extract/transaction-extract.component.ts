@@ -7,8 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { EditTransactionModalComponent } from '../edit-transaction-modal/edit-transaction-modal.component';
 import { ConfirmDeleteDialogComponent } from '../confirm-delete-dialog/confirm-delete-dialog.component';
 import { Transaction } from '@shared/models';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import { Transaction } from '@shared/models';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-transaction-extract',
