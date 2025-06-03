@@ -12,8 +12,6 @@ import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { UserService } from '@core/services/user.service';
 import { Transaction } from '@shared/models';
 import { NotificationService } from '@shared/services/notification.service';
-import { MatCardModule } from '@angular/material/card';
-import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
 import { LOCALE_ID } from '@angular/core';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
