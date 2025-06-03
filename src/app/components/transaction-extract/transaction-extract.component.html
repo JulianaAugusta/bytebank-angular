@@ -36,7 +36,7 @@
           <mat-icon class="icon-settings" matTooltip="Editar" fontSet="material-symbols-outlined">edit</mat-icon>
         </button>
 
-        <button color="warn" (click)="deleteTransaction(t.id, t.description)">
+        <button color="warn" (click)="deleteTransaction(t.id!, t.description!)">
           <mat-icon class="icon-settings"  matTooltip="Excluir" fontSet="material-symbols-outlined">delete</mat-icon>
         </button>
       </div>
