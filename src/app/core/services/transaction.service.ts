@@ -1,18 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Transaction } from '@shared/models';
 import { Observable, Subject, tap } from 'rxjs';
-
-export interface Transaction {
-  id: number;
-  date: string;
-  description: string;
-  amount: number;
-  type: 'income' | 'expense';
-  category: string;
-  account: string;
-  notes: string;
-  tags: string[];
-}
 
 @Injectable({
   providedIn: 'root',

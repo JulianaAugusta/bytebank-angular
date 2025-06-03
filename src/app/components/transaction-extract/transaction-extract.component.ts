@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-import {
-  Transaction,
-  TransactionService,
-} from '@core/services/transaction.service';
+import { TransactionService } from '@core/services/transaction.service';
 import { groupBy } from 'lodash';
 import { MatDialog } from '@angular/material/dialog';
 import { EditTransactionModalComponent } from '../edit-transaction-modal/edit-transaction-modal.component';
 import { ConfirmDeleteDialogComponent } from '../confirm-delete-dialog/confirm-delete-dialog.component';
+import { Transaction } from '@shared/models';
 
 @Component({
   selector: 'app-transaction-extract',
