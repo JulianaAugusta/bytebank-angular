@@ -9,6 +9,7 @@ import { ConfirmDeleteDialogComponent } from '../confirm-delete-dialog/confirm-d
 import { Transaction } from '@shared/models';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
+
 @Component({
   selector: 'app-transaction-extract',
   standalone: true,
