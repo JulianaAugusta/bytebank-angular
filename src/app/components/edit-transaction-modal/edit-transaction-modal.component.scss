@@ -26,6 +26,13 @@ mat-form-field {
   button {
     min-width: 100px;
     font-weight: 500;
+    color: white;
+  }
+
+  button:first-child {
+    background-color: #f1f1f1;
+    color: #333;
+    margin-right: 8px;
   }
 }
 

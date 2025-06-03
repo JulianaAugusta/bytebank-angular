@@ -39,4 +39,8 @@ export class EditTransactionModalComponent {
   submit() {
     this.dialogRef.close(this.editedTransaction);
   }
+
+  cancel(): void {
+    this.dialogRef.close(false);
+  }
 }

@@ -9,11 +9,12 @@ import { groupBy } from 'lodash';
 import { MatDialog } from '@angular/material/dialog';
 import { EditTransactionModalComponent } from '../edit-transaction-modal/edit-transaction-modal.component';
 import { ConfirmDeleteDialogComponent } from '../confirm-delete-dialog/confirm-delete-dialog.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-transaction-extract',
   standalone: true,
-  imports: [CommonModule, MatIconModule],
+  imports: [CommonModule, MatIconModule, MatTooltipModule],
   templateUrl: './transaction-extract.component.html',
   styleUrl: './transaction-extract.component.scss',
 })
