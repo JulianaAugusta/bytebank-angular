@@ -6,12 +6,12 @@
   max-width: 320px;
 
   .title {
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: #333;
-  margin-bottom: 1rem;
-  font-family: 'Segoe UI', sans-serif;
-}
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 1rem;
+    font-family: "Segoe UI", sans-serif;
+  }
 
   h4 {
     font-size: 1.3rem;
@@ -67,13 +67,27 @@
     display: flex;
     align-self: start;
 
+    button {
+      border: none;
+      background: none;
+      box-shadow: none;
+      padding: 4px;
+      margin: 0;
+      min-width: unset;
+      min-height: unset;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
     .icon-settings {
       font-size: 16px;
       cursor: pointer;
     }
 
     .icon-settings:hover {
-      background-color: #f5f5f5;
+      color: #EB6A1C;
     }
   }
 
@@ -94,4 +108,3 @@
 ::ng-deep .transaction .mat-icon.expense {
   color: #d32f2f !important;
 }
-

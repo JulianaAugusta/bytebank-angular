@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -25,17 +25,18 @@ import { Transaction } from '@shared/models';
 })
 export class EditTransactionModalComponent {
 
-  @Output() save = new EventEmitter<Transaction>();
-
   editedTransaction!: Transaction;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { transaction: Transaction }) {}
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: { transaction: Transaction },
+    private dialogRef: MatDialogRef<EditTransactionModalComponent>
+  ) {}
 
   ngOnInit() {
     this.editedTransaction = { ...this.data.transaction };
   }
 
   submit() {
-    this.save.emit(this.editedTransaction);
+    this.dialogRef.close(this.editedTransaction);
   }
 }
