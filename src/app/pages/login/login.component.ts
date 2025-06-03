@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
 import { MAT_DIALOG_DATA, MatDialogActions, MatDialogContent, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { NotificationService } from '@shared/services/notification.service';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-login',
@@ -16,15 +17,15 @@ import { NotificationService } from '@shared/services/notification.service';
   imports: [
     CommonModule, 
     FormsModule,
+    MatButtonModule,
+    MatCheckboxModule,
     MatDialogActions,
     MatDialogContent,
-    MatButtonModule,
     MatDialogModule,
     MatFormFieldModule, 
     MatIconModule,
     MatInputModule, 
-    ReactiveFormsModule,
-    MatButtonModule,
+    ReactiveFormsModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
@@ -45,7 +46,8 @@ export class LoginComponent {
       Validators.required, 
       Validators.pattern(/^(?!\s)(?!.*^\s+$).+/)
     ] : Validators.pattern(/^(?!\s)(?!.*^\s+$).+/)),
-    password: new FormControl('', Validators.required)
+    password: new FormControl('', Validators.required),
+    agree: new FormControl(false, this.signupMode() ? Validators.requiredTrue : null)
   });
 
   onSubmit() {
