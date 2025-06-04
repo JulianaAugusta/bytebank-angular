@@ -50,7 +50,7 @@
         background: $green-500;
         border: 2px solid $green-500;
         margin-right: $margin-medium;
-
+        
         &:hover {
           background: $green-600;
           border: 2px solid $green-600;
@@ -144,25 +144,3 @@
     border-radius: 50%;
   }
 }
-
-.menu-toggle {
-  margin-right: 1rem;
-  background-color: #00995d;
-  color: white;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  &:hover {
-    background-color: #007a45;
-  }
-
-  mat-icon {
-    font-size: 20px;
-    line-height: 20px;
-  }
-}
-

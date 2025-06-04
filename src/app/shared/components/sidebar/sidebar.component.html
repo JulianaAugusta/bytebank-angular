@@ -1,35 +1,25 @@
-<!-- Backdrop -->
-<div class="sidebar-backdrop" *ngIf="isMobile() && isMenuOpen()" (click)="toggleMenu()"></div>
-
-<!-- Sidebar -->
-<nav
-  *ngIf="collapsed !== null"
-  class="sidebar"
-  [class.sidebar-open]="isMobile() && isMenuOpen()"
-  [class.sidebar-closed]="isMobile() && !isMenuOpen()"
-  [class.collapsed]="!isMobile() && collapsed"
->
+<nav class="sidebar">
   <mat-nav-list class="sidebar-list">
-    <a mat-list-item routerLink="/" (click)="toggleMenuIfMobile()">
-      <mat-icon>home</mat-icon>
+    <a mat-list-item routerLink="/">
+      <mat-icon class="material-symbols-outlined"> home </mat-icon>
       <span>Início</span>
     </a>
-    <a mat-list-item routerLink="/transferencias" (click)="toggleMenuIfMobile()">
-      <mat-icon>wallet</mat-icon>
+    <a mat-list-item routerLink="/transferencias">
+      <mat-icon class="material-symbols-outlined"> wallet </mat-icon>
       <span>Transferências</span>
     </a>
-    <a mat-list-item routerLink="/investimentos" (click)="toggleMenuIfMobile()">
-      <mat-icon>trending_up</mat-icon>
+    <a mat-list-item routerLink="/investimentos">
+      <mat-icon class="material-symbols-outlined">trending_up</mat-icon>
       <span>Investimentos</span>
     </a>
-    <a mat-list-item routerLink="/servicos" (click)="toggleMenuIfMobile()">
-      <mat-icon>grid_view</mat-icon>
+    <a mat-list-item routerLink="/servicos">
+      <mat-icon class="material-symbols-outlined"> grid_view </mat-icon>
       <span>Outros serviços</span>
     </a>
+
     <a mat-list-item class="logout-item" (click)="logout()">
       <mat-icon>logout</mat-icon>
       <span>Sair</span>
     </a>
   </mat-nav-list>
 </nav>
-

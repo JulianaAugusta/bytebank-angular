@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from '@shared/components/navbar/navbar.component';
 import { SidebarComponent } from '@shared/components/sidebar/sidebar.component';
@@ -11,11 +11,5 @@ import { SidebarComponent } from '@shared/components/sidebar/sidebar.component';
   styleUrl: './base.component.scss'
 })
 export class BaseComponent {
-   collapsed = signal(false);
-
-  toggleMenu() {
-    this.collapsed.update((v) => !v);
-    console.log(this.collapsed() , 'FUNCIONAMENTO');
-  }
 
 }
